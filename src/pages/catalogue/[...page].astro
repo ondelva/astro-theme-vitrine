@@ -1,0 +1,43 @@
+---
+// /catalogue, /catalogue/2, … The whole archive, a sheet of plates at a time.
+import type { GetStaticPaths } from 'astro';
+import Base from '../../layouts/Base.astro';
+import Pagination from '../../components/common/Pagination.astro';
+import Plate from '../../components/plate/Plate.astro';
+import PlateGrid from '../../components/plate/PlateGrid.astro';
+import { catalogue, site } from '../../config';
+import { getPlates } from '../../lib/content';
+
+export const getStaticPaths = (async ({ paginate }) =>
+  paginate(await getPlates(), { pageSize: catalogue.platesPerPage })) satisfies GetStaticPaths;
+
+const { page } = Astro.props;
+const description = `Every object in the ${site.name} catalogue, in catalogue order.`;
+const first = page.start + 1;
+---
+
+<Base
+  title={page.currentPage > 1 ? `Catalogue (${page.currentPage})` : 'Catalogue'}
+  description={description}
+>
+  <div class="max-w-wide mx-auto px-4 pt-14 pb-20 md:pt-20">
+    <div class="border-rule flex flex-wrap items-baseline justify-between gap-x-6 gap-y-2 border-b pb-3">
+      <h1 class="font-ui text-[clamp(2.25rem,6vw,3.5rem)] leading-[1.05]">Catalogue</h1>
+      <p class="text-muted text-sm tabular-nums">
+        {first}–{page.start + page.data.length} of {page.total}
+      </p>
+    </div>
+    <p class="text-muted max-w-content mt-5 text-lg">
+      Arranged by collection, and within a collection by date. The number under each plate is the
+      one the archive answers to.
+    </p>
+
+    <PlateGrid class="mt-10 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
+      {page.data.map((plate, i) => (
+        <Plate plate={plate} priority={i < 3} lcp={i === 0} />
+      ))}
+    </PlateGrid>
+
+    <Pagination page={page} />
+  </div>
+</Base>
