@@ -4,7 +4,7 @@ A catalogue raisonné for the web. An Astro theme for archives, collections and 
 work that are made of objects: one plate per object, set inside a ruled grid, with the
 label underneath. Free and MIT-licensed.
 
-[Live demo](https://vitrine-free.ondelva.com) · [Pro demo](https://vitrine.ondelva.com)
+[Live demo](https://vitrine-free.ondelva.com) · [Pro demo](https://vitrine.ondelva.com) · [Get Pro](https://buy.polar.sh/polar_cl_z7WP4LpiFkzsqqsbn6nQ9tCRmEhqJhuDhHKKC3mxEzz)
 
 ![Vitrine: a sheet of the catalogue](docs/screenshots/catalogue-light.jpg)
 
@@ -96,7 +96,9 @@ Set `SITE_URL` to your address afterwards. See [docs/deploy.md](docs/deploy.md).
 
 This edition is a finished archive: the plate grid, the catalogue, the collections and the
 entries. Pro is the rest of the printed catalogue — the apparatus, the second axis and the
-ways in. See it running at [vitrine.ondelva.com](https://vitrine.ondelva.com).
+ways in. See it running at [vitrine.ondelva.com](https://vitrine.ondelva.com), and
+[buy it here](https://buy.polar.sh/polar_cl_z7WP4LpiFkzsqqsbn6nQ9tCRmEhqJhuDhHKKC3mxEzz) — $49 for one person, $129 for a
+team of up to ten.
 
 |                   | Free (this repo)                                                    | Pro                                                                           |
 | ----------------- | ------------------------------------------------------------------- | ----------------------------------------------------------------------------- |

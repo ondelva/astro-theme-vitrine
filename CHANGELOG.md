@@ -6,6 +6,12 @@ All notable changes to this theme are documented here. The format follows
 
 ## [Unreleased]
 
+## [1.0.0] — 2026-09-23
+
+First release. The theme is unchanged since 0.9.0; what is new is everything around it —
+the live demo at [vitrine-free.ondelva.com](https://vitrine-free.ondelva.com), the
+screenshots in the README, and the link to Vitrine Pro.
+
 ## [0.9.0] — 2026-09-22
 
 First snapshot of the free edition, cut from Vitrine Pro. The live demo and the
