@@ -14,7 +14,8 @@ on:
       - '.cursor/**'
   pull_request:
   schedule:
-    # Lighthouse only -- see the guard on the lhci step. 주 1회, 월요일 03:37 KST(푸시가 드문 저장소).
+    # Lighthouse only -- see the guard on the lhci step. Once a week, Monday 03:37 KST
+    # (this repository is pushed to rarely).
     # Odd minute on purpose: GitHub's cron queue backs up on the hour.
     - cron: '37 18 * * 0'
   workflow_dispatch:

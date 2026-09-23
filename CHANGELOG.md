@@ -6,6 +6,12 @@ All notable changes to this theme are documented here. The format follows
 
 ## [Unreleased]
 
+## [1.0.1] — 2026-09-23
+
+### Fixed
+
+- A comment in the CI workflow was not in English.
+
 ## [1.0.0] — 2026-09-23
 
 First release. The theme is unchanged since 0.9.0; what is new is everything around it —
