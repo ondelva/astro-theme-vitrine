@@ -6,6 +6,22 @@ All notable changes to this theme are documented here. The format follows
 
 ## [Unreleased]
 
+## [1.0.3] — 2026-09-23
+
+### Fixed
+
+- A draft object no longer ships its photograph. `draft: true` keeps the entry off the
+  pages, but the file was still read and its image still built into `dist/`, unlinked and
+  downloadable. Objects under `src/content/objects/_drafts/` are outside the loader's
+  pattern, so nothing of them is built at all; the sample draft has moved there.
+
+### Changed
+
+- Two of the sample notes are the length a catalogue entry really runs to, so the entry
+  page is shown holding more than a caption's worth of prose.
+- `docs/customization.md` says why there is no `/about` page and what to write if you want
+  one; `docs/content.md` documents `_drafts/` and what `cover` is for.
+
 ## [1.0.2] — 2026-09-23
 
 ### Changed

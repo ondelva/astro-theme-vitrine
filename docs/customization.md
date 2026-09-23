@@ -131,6 +131,12 @@ import PageLayout from '../layouts/PageLayout.astro';
 
 Add it to `nav.header` or `nav.footer` in `config.ts` to link it.
 
+There is no `/about` on purpose: the colophon is where an archive says who keeps it,
+what it is made of and how to reach it, and two pages saying that is one too many. If
+the page is wanted under its own name, the snippet above is the whole of it — save it
+as `src/pages/about.astro` and put `{ label: 'About', href: '/about' }` in
+`nav.header`.
+
 ## Body copy
 
 Notes and the legal pages use one class, `.prose`, defined at the end of

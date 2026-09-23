@@ -36,7 +36,7 @@ After any change, `pnpm check && pnpm build` must pass. After any colour change,
 | Catalogue grid, pagination, column count                                                                       | `src/pages/catalogue/[...page].astro`                    | Column utilities are passed to `PlateGrid` as a `class`; the grid itself has no opinion                      |
 | Object entry                                                                                                   | `src/pages/catalogue/[id].astro`                         | The plate at page size, the wall label, the note and the nearby entries                                      |
 | Collections                                                                                                    | `src/pages/collections/index.astro`, `[id].astro`        |                                                                                                              |
-| Add an object                                                                                                  | `src/content/objects/<slug>.mdx`                         | Schema below; images go in `src/assets/objects/`                                                             |
+| Add an object                                                                                                  | `src/content/objects/<slug>.mdx`                         | Schema below; images go in `src/assets/objects/`. Not ready to be seen: `_drafts/` (see `draft`)             |
 | Add a collection                                                                                               | `src/content/collections/<slug>.md`                      | `description` is the paragraph above the plates; the body is not rendered                                    |
 | Schema fields                                                                                                  | `src/content.config.ts`                                  | Never remove a field; new fields must be optional or have a default                                          |
 | Content queries                                                                                                | `src/lib/content.ts`                                     | The only place that calls `getCollection()`. Draft filtering and catalogue numbering live here               |
@@ -83,7 +83,10 @@ objects:
   credit?: string
   span: 1 | 2            # default 1; 2 takes a double-width cell
   featured: boolean      # default false; eligible for the home grid
-  draft: boolean         # default false; true excludes from the build
+  draft: boolean         # default false; true keeps the entry off every page, but its
+                         # photograph is still built. A file under
+                         # src/content/objects/_drafts/ is not read at all, which is
+                         # what keeps the image out of dist/ as well.
 
 collections:
   title: string          # required

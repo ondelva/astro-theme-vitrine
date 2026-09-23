@@ -5,7 +5,14 @@ import { z } from 'astro/zod';
 // One entry is one object in the archive. The plate grid, the object page and the
 // collection pages all read from here; nothing about an object lives in a page.
 const objects = defineCollection({
-  loader: glob({ base: './src/content/objects', pattern: '**/*.{md,mdx}' }),
+  // `_drafts/` is out of the pattern rather than filtered later: a file the loader
+  // reads has its `image()` registered, and an asset registered is an asset built.
+  // `draft: true` keeps an entry off the pages; the folder keeps its photograph out
+  // of the build. An object not ready to be seen wants both.
+  loader: glob({
+    base: './src/content/objects',
+    pattern: ['**/*.{md,mdx}', '!_drafts/**'],
+  }),
   schema: ({ image }) =>
     z.object({
       title: z.string(),
