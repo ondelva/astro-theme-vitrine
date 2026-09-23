@@ -59,6 +59,11 @@ Import the repository; Vercel detects Astro and fills in `pnpm build` and `dist`
 else is needed. Set `SITE_URL` as an environment variable if you want preview deployments
 to have correct canonical URLs.
 
+A new project is private: the build succeeds, and the deployment URL answers with a login
+screen (Deployment Protection, a 302 to Vercel's SSO). The production alias is public, but
+attach your domain, or turn protection off under Settings → Deployment Protection, before
+you send a deployment link to anyone.
+
 ## Netlify
 
 Import the repository and set:
@@ -66,6 +71,12 @@ Import the repository and set:
 - Build command: `pnpm build`
 - Publish directory: `dist`
 - Environment variable: `NODE_VERSION` = `22`
+
+Two things a first deploy does on its own. `pnpm-workspace.yaml` makes Netlify read the
+project as a monorepo and propose `pnpm --filter astro-theme-vitrine... run build`; leave
+it, it builds correctly. And a new site is private by default, so the `.netlify.app` URL
+answers 401 until you attach a domain or make the site public under Project configuration →
+General → Visitor access.
 
 ## Anywhere else
 

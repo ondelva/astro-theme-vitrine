@@ -6,6 +6,17 @@ All notable changes to this theme are documented here. The format follows
 
 ## [Unreleased]
 
+## [1.0.2] — 2026-09-23
+
+### Changed
+
+- `docs/deploy.md` says what Vercel and Netlify do on a first deploy on their own: a new
+  Vercel project protects its deployment URL behind SSO, and a new Netlify site is private
+  and reads the project as a monorepo because of `pnpm-workspace.yaml`.
+- The CI workflow is simpler: it runs the gates on every push and pull request, and nothing
+  else. The weekly Lighthouse schedule and the path filter it used to carry were ours, not
+  yours, and they spent your Actions minutes.
+
 ## [1.0.1] — 2026-09-23
 
 ### Fixed

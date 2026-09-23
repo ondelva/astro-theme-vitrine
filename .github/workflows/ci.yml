@@ -3,29 +3,7 @@ name: CI
 on:
   push:
     branches: [main]
-    # Docs-only commits do not change the build. '*.md' matches root files only,
-    # so src/content/**/*.md -- demo content -- still triggers a run.
-    paths-ignore:
-      - 'docs/**'
-      - 'marketing/**'
-      - '*.md'
-      - '.claude/**'
-      - '.vscode/**'
-      - '.cursor/**'
   pull_request:
-  schedule:
-    # Lighthouse only -- see the guard on the lhci step. Once a week, Monday 03:37 KST
-    # (this repository is pushed to rarely).
-    # Odd minute on purpose: GitHub's cron queue backs up on the hour.
-    - cron: '37 18 * * 0'
-  workflow_dispatch:
-
-# A newer push makes the running one irrelevant; do not pay for it to finish.
-# event_name is in the key so the scheduled Lighthouse run sits in its own lane and
-# a morning push cannot cancel it.
-concurrency:
-  group: ${{ github.workflow }}-${{ github.ref }}-${{ github.event_name }}
-  cancel-in-progress: true
 
 jobs:
   check:
@@ -42,12 +20,8 @@ jobs:
       - run: pnpm lint
       - run: pnpm check:contrast
       - run: pnpm build
-      # Thresholds (mobile, 95+ on all four categories) live in lighthouserc.json
-      # 297s of a 440s run -- the single most expensive thing in CI. Off the push
-      # path: it runs on the schedule above, on every PR, and on workflow_dispatch
-      # before a release. A push still gets check/lint/contrast/build/links.
-      - if: github.event_name != 'push'
-        run: pnpm dlx @lhci/cli@0.15.1 autorun
+      # Thresholds (mobile, 95+ on all four categories) live in lighthouserc.cjs
+      - run: pnpm dlx @lhci/cli@0.15.1 autorun
       # Internal links only; external ones are somebody else's uptime
       - run: pnpm dlx linkinator@8.1.0 dist --recurse --skip '^https?://(?!(localhost|127\.0\.0\.1|\[::1\])[:/])'
       - if: failure()
