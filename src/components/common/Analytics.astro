@@ -22,11 +22,12 @@ const src = {
     <script is:inline async src={src.ga4}></script>
     <script is:inline define:vars={{ id }}>
       window.dataLayer = window.dataLayer || [];
-      function gtag() {
+      // On window: define:vars wraps this script in a function, and your own events call gtag().
+      window.gtag = function () {
         // gtag.js needs the arguments object itself; an array is handled differently.
         // eslint-disable-next-line prefer-rest-params
         window.dataLayer.push(arguments);
-      }
+      };
       gtag('js', new Date());
       gtag('config', id);
     </script>

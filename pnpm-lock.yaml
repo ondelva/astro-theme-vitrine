@@ -7,6 +7,9 @@ settings:
 importers:
   .:
     dependencies:
+      '@astrojs/markdown-satteri':
+        specifier: 0.4.1
+        version: 0.4.1
       '@astrojs/mdx':
         specifier: 8.0.1
         version: 8.0.1(@astrojs/markdown-satteri@0.4.1)(astro@7.3.3(@emnapi/core@1.11.3)(@emnapi/runtime@1.11.3)(@types/node@24.13.6)(jiti@2.7.0)(yaml@2.9.1))

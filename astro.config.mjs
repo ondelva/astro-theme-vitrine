@@ -5,9 +5,13 @@ import mdx from '@astrojs/mdx';
 import sitemap from '@astrojs/sitemap';
 import icon from 'astro-icon';
 import { site } from './src/config.ts';
+import { satteri } from '@astrojs/markdown-satteri';
+import { tableScroll } from './src/lib/table-scroll.ts';
 
 // https://astro.build/config
 export default defineConfig({
+  // tableScroll: wide tables scroll in a wrapper, keeping their table semantics.
+  markdown: { processor: satteri({ hastPlugins: [tableScroll] }) },
   // SITE_URL overrides config.ts at build time (used by demo deploys).
   site: process.env.SITE_URL ?? site.url,
   integrations: [
