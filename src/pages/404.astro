@@ -1,13 +1,16 @@
 ---
 import Base from '../layouts/Base.astro';
+import { ui } from '../config';
+
+const t = ui.notFound;
 ---
 
-<Base title="Page not found" noindex>
+<Base title={t.title} noindex>
   <div class="mx-auto max-w-content px-4 py-24">
-    <h1 class="text-3xl font-bold">Page not found</h1>
-    <p class="mt-4 text-muted">The page you asked for is not here.</p>
+    <h1 class="text-3xl font-bold">{t.title}</h1>
+    <p class="mt-4 text-muted">{t.text}</p>
     <p class="mt-4">
-      <a href="/">Back to the home page</a>
+      <a href="/">{t.home}</a>
     </p>
   </div>
 </Base>

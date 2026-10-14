@@ -4,6 +4,12 @@ All notable changes to this theme are documented here. The format follows
 [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and the theme follows
 [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.1.0] - 2026-10-14
+
+### Added
+
+- Every word the theme prints is in `ui` in `src/config.ts`, ready to translate: headings, labels, counts, the contact form.
+
 ## [1.0.4] - 2026-10-14
 
 ### Fixed

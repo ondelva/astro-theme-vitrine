@@ -29,6 +29,11 @@ and is never built into `dist/`.
 | `features.darkMode`                     | Off removes the switcher; the site then follows the reader's system setting                                                                         |
 | `features.plate`                        | Off replaces the rule grid with a plain spaced grid, no rules, no cartellino                                                                        |
 | `analytics`                             | `provider` (`'plausible'`, `'ga4'`, `'umami'`) and `id`. Nothing is loaded while `provider` is `null`. `host` is for self-hosted Plausible or Umami |
+| `ui`                                    | Every word the theme prints: headings, labels, counts, the contact form. Translate it along with `site.locale`; see below                           |
+
+### Words and language
+
+`ui` at the end of `src/config.ts` holds every word the theme prints, so a catalogue in another language is one block to translate (and `site.locale`). Counts are functions, so plurals stay right: ``objects: (count) => `${count} Objekte` ``. A string that carries a link (`<a href="/terms">Terms</a>`) is printed as markup: keep the tag when you translate it. The colophon's paragraphs and production table are the page itself, `src/pages/colophon.astro`. Dates as written in each object's `dateText`.
 
 ## Colours
 

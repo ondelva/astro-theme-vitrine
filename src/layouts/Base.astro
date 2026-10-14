@@ -6,7 +6,7 @@ import DemoBar from '../components/common/DemoBar.astro';
 import Header from '../components/common/Header.astro';
 import Footer from '../components/common/Footer.astro';
 import Analytics from '../components/common/Analytics.astro';
-import { site } from '../config';
+import { site, ui } from '../config';
 
 type Props = ComponentProps<typeof SEO> & {
   home?: boolean; // the home masthead carries the nameplate, so the header drops it
@@ -36,7 +36,7 @@ const { home = false, ...seo } = Astro.props;
       href="#main"
       class="bg-foreground text-background font-ui sr-only z-50 text-sm no-underline focus:fixed focus:top-4 focus:left-4 focus:not-sr-only focus:px-4 focus:py-2"
     >
-      Skip to content
+      {ui.skipToContent}
     </a>
     <DemoBar />
     <Header home={home} />

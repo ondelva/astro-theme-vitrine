@@ -1,6 +1,6 @@
 ---
 import { Icon } from 'astro-icon/components';
-import { nav, site } from '../../config';
+import { nav, site, ui } from '../../config';
 
 const year = new Date().getFullYear();
 ---
@@ -28,8 +28,8 @@ const year = new Date().getFullYear();
           </nav>
         ))}
         {nav.social.length > 0 && (
-          <nav aria-label="Elsewhere">
-            <p class="font-ui text-sm font-medium">Elsewhere</p>
+          <nav aria-label={ui.elsewhere}>
+            <p class="font-ui text-sm font-medium">{ui.elsewhere}</p>
             <ul class="mt-3 flex gap-3">
               {nav.social.map((link) => (
                 <li>

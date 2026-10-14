@@ -1,6 +1,6 @@
 ---
 // The nameplate is off on the home page, where the masthead block already carries it.
-import { features, nav, site } from '../../config';
+import { features, nav, site, ui } from '../../config';
 import ThemeToggle from './ThemeToggle.astro';
 
 interface Props {
@@ -19,7 +19,7 @@ const current = (href: string) => path === href || path.startsWith(`${href}/`);
       </a>
     )}
     <nav
-      aria-label="Main"
+      aria-label={ui.mainNav}
       class="ms-auto flex flex-wrap items-baseline justify-end gap-x-3 gap-y-1 text-[0.8125rem] sm:gap-x-5 sm:text-sm"
     >
       {nav.header.map((item) => (

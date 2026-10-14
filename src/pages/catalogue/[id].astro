@@ -7,7 +7,7 @@ import { render } from 'astro:content';
 import Base from '../../layouts/Base.astro';
 import Plate from '../../components/plate/Plate.astro';
 import PlateGrid from '../../components/plate/PlateGrid.astro';
-import { catalogue, site } from '../../config';
+import { catalogue, site, ui } from '../../config';
 import { getPlates, getRelatedPlates, groupPath } from '../../lib/content';
 
 export const getStaticPaths = (async () =>
@@ -24,12 +24,12 @@ const related = await getRelatedPlates(plate);
 
 // The label as a museum prints it, one row per line that exists.
 const rows = [
-  ['Medium', medium],
-  ['Date', dateText],
-  ['Dimensions', dimensions],
-  [catalogue.showAccession ? 'Catalogue' : '', catalogue.showAccession ? plate.number : ''],
-  ['Credit', credit],
-].filter(([term, value]) => term && value) as [string, string][];
+  [ui.label.medium, medium],
+  [ui.label.date, dateText],
+  [ui.label.dimensions, dimensions],
+  [ui.label.number, catalogue.showAccession ? plate.number : ''],
+  [ui.label.credit, credit],
+].filter(([, value]) => value) as [string, string][];
 
 const description = `${title}. ${[medium, dateText].join(', ')}.`;
 const abs = (path: string) => new URL(path, Astro.site).href;
@@ -51,7 +51,7 @@ const jsonLd = [
     '@type': 'BreadcrumbList',
     itemListElement: [
       { name: site.name, item: abs('/') },
-      { name: 'Catalogue', item: abs('/catalogue/') },
+      { name: ui.catalogue.title, item: abs('/catalogue/') },
       { name: title, item: url },
     ].map((crumb, i) => ({ '@type': 'ListItem', position: i + 1, ...crumb })),
   },
@@ -110,9 +110,9 @@ const jsonLd = [
     {related.length > 0 && (
       <section class="pt-20">
         <div class="border-rule flex items-baseline justify-between gap-4 border-b pb-2">
-          <h2 class="font-ui text-lg font-medium">Nearby in the catalogue</h2>
+          <h2 class="font-ui text-lg font-medium">{ui.nearby}</h2>
           <a href="/catalogue" class="text-sm no-underline">
-            The whole catalogue
+            {ui.wholeCatalogue}
           </a>
         </div>
         <PlateGrid class="mt-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">

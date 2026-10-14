@@ -3,7 +3,7 @@
 // printed catalogue ends on, so the facts about the production sit here as a
 // ruled table rather than as a paragraph about the site.
 import Base from '../layouts/Base.astro';
-import { contact, site } from '../config';
+import { contact, site, ui } from '../config';
 import { getGroups, getPlates } from '../lib/content';
 
 const plates = await getPlates();
@@ -21,12 +21,9 @@ const production: [string, string][] = [
 ];
 ---
 
-<Base
-  title="Colophon"
-  description={`${site.author} on the objects in the ${site.name} catalogue, and how the catalogue is made.`}
->
+<Base title={ui.colophon.title} description={ui.colophon.description}>
   <div class="max-w-wide mx-auto px-4 pt-14 pb-20 md:pt-20">
-    <h1 class="font-ui text-[clamp(2.25rem,6vw,3.5rem)] leading-[1.05]">Colophon</h1>
+    <h1 class="font-ui text-[clamp(2.25rem,6vw,3.5rem)] leading-[1.05]">{ui.colophon.title}</h1>
 
     <div class="mt-12 grid gap-12 md:grid-cols-[minmax(0,34rem)_minmax(0,1fr)] md:gap-16">
       <div class="prose">
